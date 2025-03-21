@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Our Store Locations - Fresh Juice</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        crossorigin="anonymous" />
+
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+    }
+h1,h2,h3{
+    font-weight: bold;
+}
+.container {
+    margin-right: 80px;
+    margin-left: 80px;
+    text-align: center;
+}
+
+header {
+    background-color: #0E2D2F;
+    color: white;
+    padding: 40px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.locations {
+    padding: 20px 0;
+}
+
+.location {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.store-details p{
+    width: 300px; 
+    text-align: center;
+    margin-left: 20px;
+    font-size: large;
+    display: flex;
+}
+.map-container {
+    width: 400px; 
+    height: 400px;
+}
+
+iframe {
+    width: 1000px;
+    height: 400px;
+    margin-left: 50px;
+}
+
+ .location-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    flex-wrap: nowrap; 
+    font-size: larger;
+ 
+
+}
+.store-image {
+    width: 400px; /* امیج کے لیے جگہ رکھیں */
+    height: 400px;
+    margin-left: 50px;
+}
+
+ .location {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); 
+}
+
+
+
+    .store-details {
+        margin-left: 20px;
+        font-size: larger;
+    }
+
+    .store-image {
+        margin-left: 50px;
+        width: 400px;
+        height: 400px;
+    }
+
+    .map-container {
+        width: 400px;
+        height: 400px;
+        margin-left: 50px;
+    }
+
+    .navbar {
+        background-color: #0e2d2f;
+        padding: 20px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+
+    .navbar .logo {
+        color: #fff;
+        font-size: 36px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        letter-spacing: 2px;
+        display: flex;
+        align-items: center;
+    }
+
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 12px 20px;
+        font-size: 18px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        /* Smooth transition for hover effect */
+        text-transform: uppercase;
+        /* Capitalize text for consistency */
+    }
+
+    .navbar a:hover {
+        background-color: #194e52;
+        /* Slightly darker hover color */
+        border-radius: 5px;
+        color: #f0f0f0;
+    }
+    footer {
+            background-color: #0e2d2f;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer-social a {
+            margin: 0 15px;
+            color: white;
+            font-size: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            transform: scale(1.2);
+        }
+    @media (max-width: 1024px) {
+    .container {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+    
+    .store-image, .map-container {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .location {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .location-info {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .store-details {
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .store-image, .map-container {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .store-image, .map-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    h1, h2 {
+        font-size: 24px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .navbar a {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .footer-social a {
+        font-size: 24px;
+        margin: 0 10px;
+    }
+}
+    @media (max-width: 768px) {
+            .location {
+                flex-direction: column;
+            }
+        }
+</style>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Shrek Juice</div>
+        <a href="Index.html">Home</a>
+        <a href="BEVERAGES.html">Products</a>
+        <a href="Store location.html">Store Location</a>
+        <a href="franchise.html">Franchising</a>
+        <a href="catering.html">Catering</a>
+        <a href="Contact Us.html">Contact</a>
+        <a href="About Us.html">About Us</a>
+    </nav>
+    <header>
+        <div class="container">
+            <h1>Shrek Juice - Store Locations</h1>
+        </div>
+    </header>
+
+    <section class="locations">
+        <div class="container">
+            <h2>Find a Store Near You</h2>
+            <p>We have several locations to serve you fresh and healthy juices! Find your nearest store below:</p>
+
+            <div class="location">
+                <div class="location-info">
+                    <div class="store-details">
+                        <h3>Downtown Location</h3>
+                        <p><strong>Address:</strong>D - 4 Block H North Nazimabad Town, Karachi, 74700 </p>
+                        <p><strong>Phone:</strong> (021) 36620102</p>
+                        <p><strong>Hours:</strong> Mon-Sun, 8:00 AM - 6:00 PM</p>
+                    </div>
+                    <img src="smoothie-bar-for-events.webp" alt="Downtown Store Image" class="store-image">
+                    <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.1234567890123!2d67.03312!3d24.92736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f1234567890%3A0xabcdef1234567890!2sAptech%20Computer%20Education%20North%20Nazimabad%20Center!5e0!3m2!1sen!2s!4v1616161616161!5m2!1sen!2s"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    
+                  ></iframe>
+                  
+                </div>
+                <div id="map-downtown" class="map-container"></div>
+            </div>
+
+            <div class="location">
+                <div class="location-info">
+                    <div class="store-details">
+                        <h3>Downtown Location</h3>
+                        <p><strong>Address:</strong>D - 4 Block H North Nazimabad Town, Karachi, 74700 </p>
+                        <p><strong>Phone:</strong> (021) 36620102</p>
+                        <p><strong>Hours:</strong> Mon-Sun, 8:00 AM - 6:00 PM</p>  
+                    </div>
+                    <img src="istockphoto-1310942545-612x612.jpg" alt="Uptown Store Image" class="store-image">
+                    <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.1234567890123!2d67.03312!3d24.92736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f1234567890%3A0xabcdef1234567890!2sAptech%20Computer%20Education%20North%20Nazimabad%20Center!5e0!3m2!1sen!2s!4v1616161616161!5m2!1sen!2s"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    
+                  ></iframe>
+                </div>
+                <div id="map-uptown" class="map-container"></div>
+            </div>
+
+            <div class="location">
+                <div class="location-info">
+                    <div class="store-details">
+                        <h3>Downtown Location</h3>
+                        <p><strong>Address:</strong>D - 4 Block H North Nazimabad Town, Karachi, 74700 </p>
+                        <p><strong>Phone:</strong> (021) 36620102</p>
+                        <p><strong>Hours:</strong> Mon-Sun, 8:00 AM - 6:00 PM</p>   
+                    </div>
+                    <img src="NCC-Juice-Bar-POS-900x450.jpg" alt="East Side Store Image" class="store-image">
+                    <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.1234567890123!2d67.03312!3d24.92736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f1234567890%3A0xabcdef1234567890!2sAptech%20Computer%20Education%20North%20Nazimabad%20Center!5e0!3m2!1sen!2s!4v1616161616161!5m2!1sen!2s"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    
+                  ></iframe>
+                </div>
+                <div id="map-eastside" class="map-container"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="font-size: 36px;">Let’s stir things up and make your day a little juicier!</h2>
+        <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+    </footer>
+</body>
+
+</html>
